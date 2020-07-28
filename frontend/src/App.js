@@ -1,3 +1,4 @@
+import Navbar from "./components/Nav/Navbar";
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Home from "./components/home/Home";
@@ -8,7 +9,6 @@ import Profile from "./components/profile/Profile";
 import actions from "./services/index";
 import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
-
 class App extends Component {
   state = {};
 
@@ -28,9 +28,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Navbar />
         {this.state.email}
         <nav>
-          <NavLink to="/">Home |</NavLink>
+          {/* <NavLink to="/">Home |</NavLink> */}
 
           {this.state.email ? (
             <Fragment>
