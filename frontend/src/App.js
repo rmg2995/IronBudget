@@ -29,6 +29,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Form></Form>
         {this.state.email}
         <nav>
           <NavLink to="/">Home |</NavLink>
