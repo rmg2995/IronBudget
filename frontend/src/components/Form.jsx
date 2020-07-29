@@ -4,6 +4,10 @@ import actions from "../services/index";
 class Form extends Component {
   state = {
     expenseType: "",
+    frequency: "",
+    // dollarAmount: 0,
+    // frequency: "",
+    // date:
   };
 
   handleChange = (e) => {
@@ -23,12 +27,7 @@ class Form extends Component {
       <div>
         <form action="/action_page.php" onSubmit={this.submitForm}>
           <label for="Expense">Expense</label>
-          <select
-            onChange={this.handleChange}
-            name="expenseType"
-            placeholder="Expense"
-            id=""
-          >
+          <select onChange={this.handleChange} name="expenseType" id="">
             <option value="" disabled selected>
               Select Expense
             </option>
@@ -42,6 +41,26 @@ class Form extends Component {
             <option value="clothing">Clothing</option>
             <option value="travel">Travel</option>
           </select>
+          <br />
+          <label for="Expense">Frequency</label>
+          <select onChange={this.handleChange} name="frequency" id="">
+            <option value="" disabled selected>
+              Select Frequency
+            </option>
+            <option value="one-time">One-time</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <br />
+          <label>Amount</label>
+          <input
+            onChange={this.handleChange}
+            type="Number"
+            id=""
+            name="amount"
+            min="0"
+          ></input>
+          <br />
           <button>Submit</button>
         </form>
       </div>
