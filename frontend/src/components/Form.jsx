@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import actions from "../services/index";
+import DatePicker from "react-date-picker";
 
 class Form extends Component {
   state = {
     expenseType: "",
     frequency: "",
+    date: new Date(),
     // dollarAmount: 0,
     // frequency: "",
     // date:
@@ -15,6 +17,8 @@ class Form extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
+  onChange = (date) => this.setState({ date });
 
   submitForm = async (e) => {
     e.preventDefault();
@@ -60,6 +64,12 @@ class Form extends Component {
             name="amount"
             min="0"
           ></input>
+          <br />
+          <DatePicker
+            name="date"
+            onChange={this.onChange}
+            value={this.state.date}
+          />
           <br />
           <button>Submit</button>
         </form>
