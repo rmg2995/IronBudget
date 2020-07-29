@@ -7,7 +7,7 @@ class Transactions extends Component {
   async componentDidMount() {
     console.log("hey", this.props);
     // let res = await actions.transactions();
-    let res = await actions.transactions2("5f20717234bf03224e26785a");
+    let res = await actions.transactions2("5f206f25da8d992b707a9994");
     console.log("whatever", res);
     this.setState({
       transactions: res.data,
@@ -18,7 +18,7 @@ class Transactions extends Component {
       return (
         <li>
           {eachTransaction.expenseType} |{eachTransaction.date} |
-          {eachTransaction.frequency} |${eachTransaction.amount} |
+          {eachTransaction.frequency} |{eachTransaction.amount} |
         </li>
       );
     });

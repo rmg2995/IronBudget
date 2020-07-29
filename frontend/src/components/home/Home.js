@@ -14,6 +14,18 @@ class Home extends Component {
 
         <div>
           <p className="unnamed-character-style-4">Transactions</p>
+          <li className="transaction-list">
+            Category 1 <span className="goal">2,475 $</span>:
+            <span className="actual">2,475 $</span>
+          </li>
+          <li className="transaction-list">
+            Category 2 <span className="goal">2,475 $</span>:
+            <span className="actual">2,475 $</span>
+          </li>
+          <li className="transaction-list">
+            Category 3 <span className="goal">2,475 $</span>:
+            <span className="actual">2,475 $</span>
+          </li>
         </div>
       </div>
     );

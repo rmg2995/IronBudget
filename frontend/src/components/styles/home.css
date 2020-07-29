@@ -104,3 +104,19 @@
   color: #fefefe;
   opacity: 1;
 }
+.transaction-list {
+  top: 525px;
+  left: 0px;
+  width: 414px;
+  height: 48px;
+  /* background: transparent url("img/Base .png") 0% 0% no-repeat padding-box; */
+  opacity: 1;
+  list-style: none;
+}
+.goal {
+  color: rgba(52, 157, 31, 1);
+  padding-left: 15vh;
+}
+.actual {
+  color: rgba(253, 96, 96, 1);
+}
