@@ -11,7 +11,7 @@ class Form extends Component {
     // frequency: "",
     // date:
   };
-
+  onChange = (date) => this.setState({ date });
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -22,7 +22,10 @@ class Form extends Component {
 
   submitForm = async (e) => {
     e.preventDefault();
-    let res = await actions.expenseCount(this.state);
+    console.log(this.props);
+    let obj = { ...this.state, user: this.props.userId._id };
+    console.log(obj);
+    let res = await actions.expenseCount(obj);
     console.log(res);
   };
 
