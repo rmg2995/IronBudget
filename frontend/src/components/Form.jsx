@@ -56,10 +56,11 @@ class Form extends Component {
             <option value="monthly">Monthly</option>
           </select>
           <br />
-          <label>Amount</label>
+          <label>Amount $</label>
           <input
             onChange={this.handleChange}
             type="Number"
+            step="0.01"
             id=""
             name="amount"
             min="0"
