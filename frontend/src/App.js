@@ -10,14 +10,14 @@ import actions from "./services/index";
 import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
 import Form from "./components/Form.jsx";
-
+import Transactions from "./components/Transactions";
 class App extends Component {
   state = {};
 
   async componentDidMount() {
     let user = await actions.isLoggedIn();
     this.setState({ ...user.data });
-    console.log("coolest ");
+    console.log("coolest ", user);
   }
 
   setUser = (user) => this.setState(user);
@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Navbar />
-        <Form></Form>
+        {/* <Form userId={this.state}></Form> */}
         {this.state.email}
         <nav>
           {/* <NavLink to="/">Home |</NavLink> */}
@@ -51,7 +51,11 @@ class App extends Component {
           )}
         </nav>
         <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={(props) => <Home {...props} userId={this.state} />}
+          />
           <Route
             exact
             path="/sign-up"
@@ -66,6 +70,16 @@ class App extends Component {
             exact
             path="/profile"
             render={(props) => <Profile {...props} user={this.state} />}
+          />
+          <Route
+            exact
+            path="/add-transactions"
+            render={(props) => <Form {...props} userId={this.state} />}
+          />
+          <Route
+            exact
+            path="/transactions"
+            render={(props) => <Transactions {...props} user={this.state} />}
           />
 
           <Route component={NotFound} />
