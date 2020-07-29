@@ -65,7 +65,27 @@
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-fefefe);
 }
-.button {
+
+.income-button {
+  top: 132px;
+  left: 50px;
+  width: 144px;
+  height: 58px;
+  background: var(--unnamed-color-8be066) 0% 0% no-repeat padding-box;
+  background: #8be066 0% 0% no-repeat padding-box;
+  box-shadow: -4px 4px 4px #00000029;
+  opacity: 1;
+  font: Bold var(--unnamed-font-size-20) / var(--unnamed-line-spacing-27)
+    var(--unnamed-font-family-futura);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-fefefe);
+  text-align: center;
+  font: Bold 20px/27px Futura;
+  letter-spacing: 0px;
+  color: #fefefe;
+}
+
+.outcome-button {
   top: 132px;
   left: 223px;
   width: 144px;

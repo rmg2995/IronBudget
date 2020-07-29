@@ -7,7 +7,14 @@ class Home extends Component {
     return (
       <div>
         <p className="unnamed-character-style-4">MY WALLET</p>
-        <button className="button">Outcome</button>
+        <div>
+          <button className="income-button">Income</button>
+          <button className="outcome-button">Outcome</button>
+        </div>
+
+        <div>
+          <p className="unnamed-character-style-4">Transactions</p>
+        </div>
       </div>
     );
   }
