@@ -55,8 +55,11 @@ class Navbar extends Component {
             <Link className="menu-item" to="/profile">
               Profile
             </Link>
-            <Link className="menu-item" to="/create-budget">
-              Create Budget
+            <Link className="menu-item" to="/transactions">
+              Transactions
+            </Link>
+            <Link className="menu-item" to="/add-transactions">
+              Add Transactions
             </Link>
             <Link className="menu-item" to="/about-us">
               About Us
