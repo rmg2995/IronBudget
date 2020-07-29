@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import actions from "../services/index";
-
+import DatePicker from "react-date-picker";
 class Form extends Component {
   state = {
     expenseType: "",
+    date: new Date(),
   };
-
+  onChange = (date) => this.setState({ date });
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -14,7 +15,10 @@ class Form extends Component {
 
   submitForm = async (e) => {
     e.preventDefault();
-    let res = await actions.expenseCount(this.state);
+    console.log(this.props);
+    let obj = { ...this.state, user: this.props.userId._id };
+    console.log(obj);
+    let res = await actions.expenseCount(obj);
     console.log(res);
   };
 
@@ -42,6 +46,20 @@ class Form extends Component {
             <option value="clothing">Clothing</option>
             <option value="travel">Travel</option>
           </select>
+          <label for="Expense">Frequency</label>
+          <select onChange={this.handleChange} name="frequency" id="">
+            <option value="" disabled selected>
+              Select Frequency
+            </option>
+            <option value="one-time">One-time</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <DatePicker
+            onChange={this.onChange}
+            name="date"
+            value={this.state.date}
+          />
           <button>Submit</button>
         </form>
       </div>

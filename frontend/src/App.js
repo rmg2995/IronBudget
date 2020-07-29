@@ -17,7 +17,7 @@ class App extends Component {
   async componentDidMount() {
     let user = await actions.isLoggedIn();
     this.setState({ ...user.data });
-    console.log("coolest ");
+    console.log("coolest ", user);
   }
 
   setUser = (user) => this.setState(user);
@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Navbar />
-        <Form></Form>
+        <Form userId={this.state}></Form>
         {this.state.email}
         <nav>
           {/* <NavLink to="/">Home |</NavLink> */}
@@ -51,7 +51,11 @@ class App extends Component {
           )}
         </nav>
         <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={(props) => <Home {...props} userId={this.state} />}
+          />
           <Route
             exact
             path="/sign-up"
