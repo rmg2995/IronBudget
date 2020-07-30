@@ -1,7 +1,20 @@
 const { Schema, model } = require("mongoose");
 
 const expenseSchema = new Schema({
-  expenseType: String,
+  expenseType: {
+    type: String,
+    enum: [
+      "entertainment",
+      "restaurant",
+      "bills",
+      "groceries",
+      "transportation",
+      "education",
+      "home",
+      "clothing",
+      "travel",
+    ],
+  },
   frequency: String,
   amount: Number,
   date: Date,
