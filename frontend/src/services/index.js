@@ -25,11 +25,17 @@ const actions = {
   expenseCount: async (expenseLog) => {
     return await service.post("/expense", expenseLog);
   },
+  incomeCount: async (incomeLog) => {
+    return await service.post("/income", incomeLog);
+  },
   transactions: async () => {
     return await service.get("/transactions");
   },
-  transactions2: async (user) => {
-    return await service.get(`/transactions2?id=${user}`);
+  transactionsexpense: async (user) => {
+    return await service.get(`/transactionsexpense?id=${user}`);
+  },
+  transactionsincome: async (user) => {
+    return await service.get(`/transactionsincome?id=${user}`);
   },
 };
 

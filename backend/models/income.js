@@ -1,10 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-const expenseSchema = new Schema({
-  expenseType: String,
-  frequency: String,
-  amount: Number,
-  date: Date,
+const incomeSchema = new Schema({
+  incomeType: String,
+  frequencyIncome: String,
+  amountIncome: Number,
+  dateIncome: Date,
 
   user: { type: Schema.Types.ObjectId, ref: "User" }, //required: true put later
   //   name: String,
@@ -12,4 +12,4 @@ const expenseSchema = new Schema({
   //   imageUrl: String,
 });
 
-module.exports = model("Expense", expenseSchema);
+module.exports = model("Income", incomeSchema);

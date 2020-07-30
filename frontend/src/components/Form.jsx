@@ -20,19 +20,24 @@ class Form extends Component {
 
   onChange = (date) => this.setState({ date });
 
-  submitForm = async (e) => {
+  submitForm = async (e, type) => {
+    console.log(type);
     e.preventDefault();
-    console.log(this.props);
     let obj = { ...this.state, user: this.props.userId._id };
-    console.log(obj);
-    let res = await actions.expenseCount(obj);
+    let res =
+      type === "e"
+        ? await actions.expenseCount(obj)
+        : await actions.incomeCount(obj);
     console.log(res);
   };
 
   render() {
     return (
       <div>
-        <form action="/action_page.php" onSubmit={this.submitForm}>
+        <form
+          action="/action_page.php"
+          onSubmit={(e) => this.submitForm(e, "e")}
+        >
           <label for="Expense">Expense</label>
           <select onChange={this.handleChange} name="expenseType" id="">
             <option value="" disabled selected>
@@ -72,6 +77,45 @@ class Form extends Component {
           <br />
           <DatePicker
             name="date"
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+          <br />
+          <button>Submit</button>
+        </form>
+        <form action="/action_page.php" onSubmit={(e) => this.submitForm(e)}>
+          <label for="Income">Income</label>
+          <select onChange={this.handleChange} name="incomeType" id="">
+            <option value="" disabled selected>
+              Select Income
+            </option>
+            <option value="wage">Wage</option>
+            <option value="tip">Tip</option>
+          </select>
+          <br />
+          <label for="Income">Frequency</label>
+          <select onChange={this.handleChange} name="frequencyIncome" id="">
+            <option value="" disabled selected>
+              Select Frequency
+            </option>
+            <option value="one-time">One-time</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <br />
+          <label>Amount $</label>
+          <input
+            onChange={this.handleChange}
+            type="Number"
+            step="0.01"
+            id=""
+            name="amountIncome"
+            step="0.01"
+            min="0"
+          ></input>
+          <br />
+          <DatePicker
+            name="dateIncome"
             onChange={this.onChange}
             value={this.state.date}
           />
