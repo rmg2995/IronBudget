@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import actions from "../services/index";
+import "../components/styles/transactions.css";
+
 class Transactions extends Component {
   state = {
     transactions: [],
@@ -7,7 +9,7 @@ class Transactions extends Component {
   async componentDidMount() {
     console.log("hey", this.props);
     // let res = await actions.transactions();
-    let res = await actions.transactions2("5f206f25da8d992b707a9994");
+    let res = await actions.transactions2("5f20717234bf03224e26785a");
     console.log("whatever", res);
     this.setState({
       transactions: res.data,
@@ -16,9 +18,13 @@ class Transactions extends Component {
   displayTransactions = () => {
     return this.state.transactions.map((eachTransaction) => {
       return (
-        <li>
-          {eachTransaction.expenseType} |{eachTransaction.date} |
-          {eachTransaction.frequency} |{eachTransaction.amount} |
+        <li className="transactions">
+          <div className="transaction-style">
+            <span>{eachTransaction.expenseType}</span>
+            <span>{eachTransaction.frequency}</span>
+            <span>${eachTransaction.amount}</span>
+          </div>
+          {/* |{eachTransaction.date} */}
         </li>
       );
     });
