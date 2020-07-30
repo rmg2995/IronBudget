@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import actions from "../../services/index";
 import "../styles/home.css";
+import PieChart from "./PieChart";
 
 class Home extends Component {
   render() {
@@ -11,7 +12,7 @@ class Home extends Component {
           <button className="income-button">Income</button>
           <button className="outcome-button">Outcome</button>
         </div>
-
+        <PieChart />
         <div>
           <p className="unnamed-character-style-4">Transactions</p>
           <li className="transaction-list">
