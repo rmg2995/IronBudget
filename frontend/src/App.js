@@ -27,6 +27,10 @@ class App extends Component {
     this.setUser({ email: null, createdAt: null, updatedAt: null, _id: null }); //FIX
   };
 
+  passData = (data) => {
+    console.log(data);
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -79,7 +83,13 @@ class App extends Component {
           <Route
             exact
             path="/transactions"
-            render={(props) => <Transactions {...props} user={this.state} />}
+            render={(props) => (
+              <Transactions
+                {...props}
+                user={this.state}
+                passData={this.passData}
+              />
+            )}
           />
 
           <Route component={NotFound} />
