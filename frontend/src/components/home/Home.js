@@ -56,6 +56,18 @@ class Home extends Component {
     });
   };
 
+  displayExpenseObj = () => {
+    let displayExpense = []; // in is for obj
+    for (let e in this.state.expenseObj) {
+      displayExpense.push(
+        <li className="transaction-list">
+          {e} ${this.state.expenseObj[e]}
+        </li>
+      );
+    }
+    return displayExpense;
+  };
+
   render() {
     console.log(this);
     const data = [];
@@ -94,8 +106,10 @@ class Home extends Component {
         </div>
         <div>
           <p className="unnamed-character-style-4">Transactions</p>
-          <li className="transaction-list">
-            Category 1 <span className="goal">2,475 $</span>:
+
+          {this.displayExpenseObj()}
+          {/* <li className="transaction-list"> */}
+          {/* Category 1 <span className="goal">2,475 $</span>:
             <span className="actual">2,475 $</span>
           </li>
           <li className="transaction-list">
@@ -104,8 +118,8 @@ class Home extends Component {
           </li>
           <li className="transaction-list">
             Category 3 <span className="goal">2,475 $</span>:
-            <span className="actual">2,475 $</span>
-          </li>
+            <span className="actual">2,475 $</span> */}
+          {/* </li> */}
         </div>
       </div>
     );

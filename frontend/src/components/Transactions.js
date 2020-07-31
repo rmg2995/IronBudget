@@ -127,7 +127,6 @@ class Transactions extends Component {
         <br />
         <p>Categories total</p>
         <p>restaurant</p>
-        {this.state.categories}
         {this.displayExpenseObj()}
       </div>
     );
