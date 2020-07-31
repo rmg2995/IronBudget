@@ -66,6 +66,12 @@
   color: var(--unnamed-color-fefefe);
 }
 
+/* Added styling to income and expense buttons */
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .income-button {
   top: 132px;
   left: 50px;
@@ -119,4 +125,17 @@
 }
 .actual {
   color: rgba(253, 96, 96, 1);
+}
+
+/* Added styling to pie charts */
+.PieCharts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.transaction-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }

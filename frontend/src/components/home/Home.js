@@ -92,7 +92,7 @@ class Home extends Component {
     return (
       <div>
         <p className="unnamed-character-style-4">MY WALLET</p>
-        <div>
+        <div className="buttons">
           <button className="income-button">
             Income <br />${this.state.incomeAmount}
           </button>
@@ -100,26 +100,13 @@ class Home extends Component {
             Expenses <br />${this.state.expenseAmount}
           </button>
         </div>
-        <div>
+        <div className="PieCharts">
           <PieChart data={data} />
           <PieChart data={data2} />
         </div>
         <div>
           <p className="unnamed-character-style-4">Transactions</p>
-
-          {this.displayExpenseObj()}
-          {/* <li className="transaction-list"> */}
-          {/* Category 1 <span className="goal">2,475 $</span>:
-            <span className="actual">2,475 $</span>
-          </li>
-          <li className="transaction-list">
-            Category 2 <span className="goal">2,475 $</span>:
-            <span className="actual">2,475 $</span>
-          </li>
-          <li className="transaction-list">
-            Category 3 <span className="goal">2,475 $</span>:
-            <span className="actual">2,475 $</span> */}
-          {/* </li> */}
+          <p className="transaction-display">{this.displayExpenseObj()}</p>
         </div>
       </div>
     );
