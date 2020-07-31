@@ -25,7 +25,7 @@ class Transactions extends Component {
     return this.state.transactionsexpense.map((eachTransaction) => {
       if (eachTransaction.expenseType) {
         return (
-          <li>
+          <li className="transactions">
             {eachTransaction.expenseType} |{eachTransaction.date} |
             {eachTransaction.frequency} |{eachTransaction.amount * -1} |
           </li>
@@ -40,7 +40,7 @@ class Transactions extends Component {
     return this.state.transactionsincome.map((eachTransaction) => {
       if (eachTransaction.incomeType) {
         return (
-          <li>
+          <li className="transactions">
             {eachTransaction.incomeType} |{eachTransaction.dateIncome} |
             {eachTransaction.frequencyIncome} |{eachTransaction.amountIncome} |
           </li>
@@ -111,7 +111,7 @@ class Transactions extends Component {
     let displayExpense = []; // in is for obj
     for (let e in this.state.expenseObj) {
       displayExpense.push(
-        <li>
+        <li className="transactions">
           {e} ${this.state.expenseObj[e]}
         </li>
       );
