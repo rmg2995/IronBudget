@@ -86,13 +86,7 @@ export default class Example extends PureComponent {
   };
 
   render() {
-    const data = [];
-    for (let e in this.props.expenseObj) {
-      data.push({
-        name: e,
-        value: this.props.expenseObj[e],
-      });
-    }
+    const data = this.props.data;
     return (
       <PieChart width={400} height={400}>
         <Pie

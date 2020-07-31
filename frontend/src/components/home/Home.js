@@ -57,6 +57,26 @@ class Home extends Component {
   };
 
   render() {
+    console.log(this);
+    const data = [];
+    const data2 = [];
+    for (let e in this.state.expenseObj) {
+      data.push({
+        name: e,
+        value: this.state.expenseObj[e],
+      });
+    }
+    data2.push(
+      {
+        name: "income",
+        value: this.state.incomeAmount,
+      },
+      {
+        name: "expenses",
+        value: this.state.expenseAmount,
+      }
+    );
+
     return (
       <div>
         <p className="unnamed-character-style-4">MY WALLET</p>
@@ -68,7 +88,10 @@ class Home extends Component {
             Expenses <br />${this.state.expenseAmount}
           </button>
         </div>
-        <PieChart {...this.state} />
+        <div>
+          <PieChart data={data} />
+          <PieChart data={data2} />
+        </div>
         <div>
           <p className="unnamed-character-style-4">Transactions</p>
           <li className="transaction-list">
