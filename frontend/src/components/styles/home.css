@@ -110,15 +110,7 @@
   color: #fefefe;
   opacity: 1;
 }
-.transaction-list {
-  top: 525px;
-  left: 0px;
-  width: 414px;
-  height: 48px;
-  /* background: transparent url("img/Base .png") 0% 0% no-repeat padding-box; */
-  opacity: 1;
-  list-style: none;
-}
+
 .goal {
   color: rgba(52, 157, 31, 1);
   padding-left: 15vh;
@@ -134,8 +126,7 @@
   justify-content: space-evenly;
 }
 
+/* Added styling for transactions at the bottom of home page */
 .transaction-display {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
+  list-style: none;
 }

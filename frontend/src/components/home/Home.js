@@ -90,6 +90,7 @@ class Home extends Component {
     );
 
     return (
+      // <body className="body"> consider background color for body?
       <div>
         <p className="unnamed-character-style-4">MY WALLET</p>
         <div className="buttons">
@@ -109,6 +110,7 @@ class Home extends Component {
           <p className="transaction-display">{this.displayExpenseObj()}</p>
         </div>
       </div>
+      // </body>
     );
   }
 }
