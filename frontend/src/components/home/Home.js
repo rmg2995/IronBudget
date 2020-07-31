@@ -51,6 +51,8 @@ class Home extends Component {
     this.setState({
       grandTotal: total,
       expenseObj: expenseObj,
+      expenseAmount: expenseAmount,
+      incomeAmount: incomeAmount,
     });
   };
 
@@ -59,8 +61,12 @@ class Home extends Component {
       <div>
         <p className="unnamed-character-style-4">MY WALLET</p>
         <div>
-          <button className="income-button">Income</button>
-          <button className="outcome-button">Outcome</button>
+          <button className="income-button">
+            Income <br />${this.state.incomeAmount}
+          </button>
+          <button className="outcome-button">
+            Expenses <br />${this.state.expenseAmount}
+          </button>
         </div>
         <PieChart {...this.state} />
         <div>
