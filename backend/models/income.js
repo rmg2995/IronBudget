@@ -4,7 +4,7 @@ const incomeSchema = new Schema({
   incomeType: String,
   frequencyIncome: String,
   amountIncome: Number,
-  dateIncome: Date,
+  startDate: Date,
 
   user: { type: Schema.Types.ObjectId, ref: "User" }, //required: true put later
   //   name: String,

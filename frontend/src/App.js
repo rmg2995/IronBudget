@@ -53,6 +53,9 @@ class App extends Component {
               <NavLink to="/log-in">Log In |</NavLink>
             </Fragment>
           )}
+          <br />
+          {!this.state.email && <GoogleAuth setUser={this.setUser} />}
+          {!this.state.email && <GoogleAuthLogin setUser={this.setUser} />}
         </nav>
         <Switch>
           <Route
@@ -94,8 +97,6 @@ class App extends Component {
 
           <Route component={NotFound} />
         </Switch>
-        {!this.state.email && <GoogleAuth setUser={this.setUser} />}
-        {!this.state.email && <GoogleAuthLogin setUser={this.setUser} />}
       </BrowserRouter>
     );
   }

@@ -17,7 +17,7 @@ const expenseSchema = new Schema({
   },
   frequency: String,
   amount: Number,
-  date: Date,
+  startDate: Date,
 
   user: { type: Schema.Types.ObjectId, ref: "User" }, //required: true put later
   //   name: String,

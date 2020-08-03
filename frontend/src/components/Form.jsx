@@ -1,24 +1,31 @@
 import React, { Component } from "react";
 import actions from "../services/index";
-import DatePicker from "react-date-picker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-date-picker";
 
 class Form extends Component {
   state = {
     expenseType: "",
     frequency: "",
-    date: new Date(),
+    startDate: new Date(),
+    // date: new Date(),
     // dollarAmount: 0,
     // frequency: "",
     // date:
   };
-  onChange = (date) => this.setState({ date });
+  // onChange = (date) => this.setState({ date });
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-
-  onChange = (date) => this.setState({ date });
+  onChange = (date) => {
+    this.setState({
+      startDate: date,
+    });
+  };
+  // onChange = (date) => this.setState({ date });
 
   submitForm = async (e, type) => {
     console.log(type);
@@ -76,10 +83,15 @@ class Form extends Component {
           ></input>
           <br />
           <DatePicker
+            name="startDate"
+            selected={this.state.startDate}
+            onChange={this.onChange}
+          />
+          {/* <DatePicker
             name="date"
             onChange={this.onChange}
             value={this.state.date}
-          />
+          /> */}
           <br />
           <button>Submit</button>
         </form>
@@ -114,10 +126,15 @@ class Form extends Component {
             min="0"
           ></input>
           <br />
-          <DatePicker
+          {/* <DatePicker
             name="dateIncome"
             onChange={this.onChange}
             value={this.state.date}
+          /> */}
+          <DatePicker
+            name="startDate"
+            selected={this.state.startDate}
+            onChange={this.onChange}
           />
           <br />
           <button>Submit</button>

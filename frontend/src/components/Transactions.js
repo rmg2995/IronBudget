@@ -6,6 +6,7 @@ class Transactions extends Component {
   state = {
     transactionsexpense: [],
     transactionsincome: [],
+    filterTransactions: false,
   };
   async componentDidMount() {
     // console.log("hey", this.props);
@@ -26,7 +27,8 @@ class Transactions extends Component {
       if (eachTransaction.expenseType) {
         return (
           <li className="transactions">
-            {eachTransaction.expenseType} |{eachTransaction.date} |
+            {eachTransaction.expenseType} |
+            {eachTransaction.startDate.slice(0, 10)} |
             {eachTransaction.frequency} |{eachTransaction.amount * -1} |
           </li>
         );
@@ -41,7 +43,8 @@ class Transactions extends Component {
       if (eachTransaction.incomeType) {
         return (
           <li className="transactions">
-            {eachTransaction.incomeType} |{eachTransaction.dateIncome} |
+            {eachTransaction.incomeType} |
+            {eachTransaction.startDate.slice(0, 10)} |
             {eachTransaction.frequencyIncome} |{eachTransaction.amountIncome} |
           </li>
         );
@@ -118,17 +121,38 @@ class Transactions extends Component {
     }
     return displayExpense;
   };
+
+  filterTransactions = () => {
+    let today = new Date().getMonth();
+    ++today < 10 ? (today = "0" + today) : today.toString();
+    let expenseCopy = [...this.state.transactionsexpense];
+    let incomeCopy = [...this.state.transactionsincome];
+    expenseCopy = expenseCopy.filter((expense) => {
+      return expense.startDate.slice(5, 7) === today;
+    });
+    incomeCopy = incomeCopy.filter((income) => {
+      return income.startDate.slice(5, 7) === today;
+    });
+    // console.log(incomeCopy, expenseCopy);
+    this.setState({
+      transactionsexpense: expenseCopy,
+      transactionsincome: incomeCopy,
+    });
+  };
   render() {
     return (
       <div>
+        <button onClick={this.filterTransactions}>Date filter by month</button>
+        <p>Expense</p>
         {this.displayTransactionsExpense()}
+        <p>Income</p>
         {this.displayTransactionsIncome()}
         {/* {this.totalTransactionsExpense()} */}
         {/* {this.totalTransactionsIncome()} */}
         {this.state.grandTotal}
         <br />
         <p>Categories total</p>
-        <p>restaurant</p>
+
         {this.displayExpenseObj()}
       </div>
     );
