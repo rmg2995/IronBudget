@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import actions from "../services/index";
 import "../components/styles/transactions.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class Transactions extends Component {
   state = {
@@ -9,7 +11,10 @@ class Transactions extends Component {
     filterExpense: [],
     filterIncome: [],
     toggleFilter: false,
+    // startDate: new Date(),
+    // endDate: new Date(),
   };
+
   async componentDidMount() {
     // console.log("hey", this.props);
     // let res = await actions.transactions();
@@ -33,7 +38,8 @@ class Transactions extends Component {
           <li className="transactions">
             {eachTransaction.expenseType} |
             {eachTransaction.startDate.slice(0, 10)} |
-            {eachTransaction.frequency} |{eachTransaction.amount * -1} |
+            {/* {eachTransaction.frequency} */}
+            {eachTransaction.amount * -1}
           </li>
         );
       }
@@ -49,7 +55,8 @@ class Transactions extends Component {
           <li className="transactions">
             {eachTransaction.incomeType} |
             {eachTransaction.startDate.slice(0, 10)} |
-            {eachTransaction.frequencyIncome} |{eachTransaction.amountIncome} |
+            {/* {eachTransaction.frequencyIncome} */}
+            {eachTransaction.amountIncome}
           </li>
         );
       }
@@ -131,14 +138,22 @@ class Transactions extends Component {
     ++today < 10 ? (today = "0" + today) : today.toString();
     let expenseCopy = [...this.state.transactionsexpense];
     let incomeCopy = [...this.state.transactionsincome];
-    if (this.state.toggleFilter == false) {
-      expenseCopy = this.state.transactionsexpense.filter((expense) => {
-        return expense.startDate.slice(5, 7) === today;
-      });
-      incomeCopy = this.state.transactionsincome.filter((income) => {
-        return income.startDate.slice(5, 7) === today;
-      });
-    }
+    // if (this.state.toggleFilter == false) {
+    expenseCopy = this.state.transactionsexpense.filter((expense) => {
+      // return expense.startDate.slice(5, 7) === today;
+      return (
+        new Date(expense.startDate) > this.state.startDate &&
+        new Date(expense.startDate) < this.state.endDate
+      );
+    });
+    incomeCopy = this.state.transactionsincome.filter((income) => {
+      // return income.startDate.slice(5, 7) === today;
+      return (
+        new Date(income.startDate) > this.state.startDate &&
+        new Date(income.startDate) < this.state.endDate
+      );
+    });
+    // }
     // console.log(incomeCopy, expenseCopy);
     this.setState({
       filterExpense: expenseCopy,
@@ -146,10 +161,35 @@ class Transactions extends Component {
       toggleFilter: !this.state.toggleFilter,
     });
   };
+
+  onChange = (dates) => {
+    const [start, end] = dates;
+    this.setState(
+      {
+        startDate: start,
+        endDate: end,
+      },
+      this.filterTransactions
+    );
+
+    // setStartDate(start);
+    // setEndDate(end);
+  };
+
   render() {
+    console.log(this);
     return (
       <div>
-        <form action="/action_page.php" onSubmit={(e) => this.submitForm()}>
+        <DatePicker
+          selected={this.state.startDate}
+          onChange={this.onChange}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          selectsRange
+          inline
+        />
+
+        {/* <form action="/action_page.php" onSubmit={(e) => this.submitForm()}>
           <label for="month">Month</label>
           <select onChange={this.handleChange} name="month" id="">
             <option value="" disabled selected>
@@ -169,7 +209,7 @@ class Transactions extends Component {
             <option value="12">December</option>
           </select>
           <br />
-        </form>
+        </form> */}
         <button onClick={this.filterTransactions}>Date filter by month</button>
 
         <p>Expense</p>

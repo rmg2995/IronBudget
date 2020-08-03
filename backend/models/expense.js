@@ -15,7 +15,11 @@ const expenseSchema = new Schema({
       "travel",
     ],
   },
-  frequency: String,
+  frequency: {
+    type: String,
+    enum: ["one-time", "weekly", "monthly"],
+  },
+
   amount: Number,
   startDate: Date,
 
