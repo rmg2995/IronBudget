@@ -6,7 +6,9 @@ class Transactions extends Component {
   state = {
     transactionsexpense: [],
     transactionsincome: [],
-    filterTransactions: false,
+    filterExpense: [],
+    filterIncome: [],
+    toggleFilter: false,
   };
   async componentDidMount() {
     // console.log("hey", this.props);
@@ -19,11 +21,13 @@ class Transactions extends Component {
     this.setState({
       transactionsexpense: resExpense.data,
       transactionsincome: resIncome.data,
+      filterIncome: resIncome.data,
+      filterExpense: resExpense.data,
     });
     this.oneBigLoop(resExpense.data, resIncome.data);
   }
   displayTransactionsExpense = () => {
-    return this.state.transactionsexpense.map((eachTransaction) => {
+    return this.state.filterExpense.map((eachTransaction) => {
       if (eachTransaction.expenseType) {
         return (
           <li className="transactions">
@@ -39,7 +43,7 @@ class Transactions extends Component {
     });
   };
   displayTransactionsIncome = () => {
-    return this.state.transactionsincome.map((eachTransaction) => {
+    return this.state.filterIncome.map((eachTransaction) => {
       if (eachTransaction.incomeType) {
         return (
           <li className="transactions">
@@ -127,22 +131,26 @@ class Transactions extends Component {
     ++today < 10 ? (today = "0" + today) : today.toString();
     let expenseCopy = [...this.state.transactionsexpense];
     let incomeCopy = [...this.state.transactionsincome];
-    expenseCopy = expenseCopy.filter((expense) => {
-      return expense.startDate.slice(5, 7) === today;
-    });
-    incomeCopy = incomeCopy.filter((income) => {
-      return income.startDate.slice(5, 7) === today;
-    });
+    if (this.state.toggleFilter == false) {
+      expenseCopy = this.state.transactionsexpense.filter((expense) => {
+        return expense.startDate.slice(5, 7) === today;
+      });
+      incomeCopy = this.state.transactionsincome.filter((income) => {
+        return income.startDate.slice(5, 7) === today;
+      });
+    }
     // console.log(incomeCopy, expenseCopy);
     this.setState({
-      transactionsexpense: expenseCopy,
-      transactionsincome: incomeCopy,
+      filterExpense: expenseCopy,
+      filterIncome: incomeCopy,
+      toggleFilter: !this.state.toggleFilter,
     });
   };
   render() {
     return (
       <div>
         <button onClick={this.filterTransactions}>Date filter by month</button>
+
         <p>Expense</p>
         {this.displayTransactionsExpense()}
         <p>Income</p>
