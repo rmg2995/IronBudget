@@ -11,9 +11,6 @@ class Transactions extends Component {
     filterExpense: [],
     filterIncome: [],
     toggleFilter: false,
-
-    // startDate: new Date(),
-    // endDate: new Date(),
   };
 
   async componentDidMount() {
@@ -33,29 +30,48 @@ class Transactions extends Component {
     this.oneBigLoop(resExpense.data, resIncome.data);
   }
   displayTransactionsExpense = () => {
-    return this.state.filterExpense.map((eachTransaction, i) => {
+    return this.state.filterExpense?.map((eachTransaction, i) => {
       if (eachTransaction.expenseType) {
         return (
           <li className="transactions">
             {eachTransaction.expenseType} |
             {eachTransaction.startDate.slice(0, 10)} |
-            {/* {eachTransaction.frequency} */}
             {eachTransaction.amount * -1}
             <button onClick={() => this.deleteTransaction(i)}>Delete</button>
           </li>
         );
       }
-      // this.setState({
-      //   expenseAmount:{eachTransaction.amount}
-      // })
     });
   };
 
   deleteTransaction = (i) => {
     let deleteExpense = [...this.state.filterExpense];
+
     deleteExpense.splice(i, 1);
+    let expenseAmount = 0;
+    for (let e of deleteExpense) {
+      // console.log(e);
+      if (e.amount) expenseAmount += e.amount;
+    }
+    let incomeAmount = 0;
+    for (let i of this.state.filterIncome) {
+      // console.log(i);
+      if (i.amountIncome) incomeAmount += i.amountIncome;
+    }
+    let expenseObjCopy = {};
+    deleteExpense.forEach((eachExpense) => {
+      if (expenseObjCopy[eachExpense.expenseType]) {
+        expenseObjCopy[eachExpense.expenseType] += eachExpense.amount;
+      } else {
+        expenseObjCopy[eachExpense.expenseType] = eachExpense.amount;
+      }
+    });
+    let total = incomeAmount - expenseAmount;
+
     this.setState({
-      filterExpense: this.deleteTransaction,
+      filterExpense: deleteExpense,
+      grandTotal: total,
+      expenseObj: expenseObjCopy,
     });
   };
   displayTransactionsIncome = () => {
@@ -72,34 +88,7 @@ class Transactions extends Component {
       }
     });
   };
-  // totalTransactionsExpense = () => {
-  //   console.log(this.state.transactionsexpense);
-  //   let totalExpense = this.state.transactionsexpense.reduce((a, b) => {
-  //     console.log(b);
-  //     if (b.amount) {
-  //       return a + Number(b.amount);
-  //     } else {
-  //       return a;
-  //     }
-  //   }, 0);
 
-  //   console.log(totalExpense);
-  //   return totalExpense;
-  // };
-  // totalTransactionsIncome = () => {
-  //   console.log(this.state.transactionsincome);
-  //   let totalIncome = this.state.transactionsincome.reduce((a, b) => {
-  //     console.log(b);
-  //     if (b.amountIncome) {
-  //       return a + Number(b.amountIncome);
-  //     } else {
-  //       return a;
-  //     }
-  //   }, 0);
-
-  //   console.log(totalIncome);
-  //   return totalIncome;
-  // };
   oneBigLoop = (expense, income) => {
     //all my math and big loop
     console.log(expense);
@@ -114,7 +103,7 @@ class Transactions extends Component {
       if (i.amountIncome) incomeAmount += i.amountIncome;
     }
     let total = incomeAmount - expenseAmount;
-    let expenseCategories = 0;
+
     let expenseObj = {};
     for (let e of expense) {
       // if (e.expenseType == "restaurant") expenseCategories += e.amount;
@@ -148,7 +137,7 @@ class Transactions extends Component {
     ++today < 10 ? (today = "0" + today) : today.toString();
     let expenseCopy = [...this.state.transactionsexpense];
     let incomeCopy = [...this.state.transactionsincome];
-    // let expenseObjCopy = { ...this.state.expenseObj };
+    let expenseObjCopy = {};
     // if (this.state.toggleFilter == false) {
     expenseCopy = this.state.transactionsexpense.filter((expense) => {
       // return expense.startDate.slice(5, 7) === today;
@@ -164,6 +153,24 @@ class Transactions extends Component {
         new Date(income.startDate) < this.state.endDate
       );
     });
+    expenseCopy.forEach((eachExpense) => {
+      if (expenseObjCopy[eachExpense.expenseType]) {
+        expenseObjCopy[eachExpense.expenseType] += eachExpense.amount;
+      } else {
+        expenseObjCopy[eachExpense.expenseType] = eachExpense.amount;
+      }
+    });
+    let expenseAmount = 0;
+    for (let e of expenseCopy) {
+      // console.log(e);
+      if (e.amount) expenseAmount += e.amount;
+    }
+    let incomeAmount = 0;
+    for (let i of incomeCopy) {
+      // console.log(i);
+      if (i.amountIncome) incomeAmount += i.amountIncome;
+    }
+    let total = incomeAmount - expenseAmount;
     // expenseObjCopy = this.state.expenseObj.filter((total) => {
     //   // return income.startDate.slice(5, 7) === today;
     //   return (
@@ -176,7 +183,8 @@ class Transactions extends Component {
     this.setState({
       filterExpense: expenseCopy,
       filterIncome: incomeCopy,
-      // expenseObj: expenseObjCopy,
+      expenseObj: expenseObjCopy,
+      grandTotal: total,
       toggleFilter: !this.state.toggleFilter,
     });
   };
@@ -197,7 +205,7 @@ class Transactions extends Component {
   };
 
   render() {
-    console.log(this);
+    console.log("looking 199", this.state);
     return (
       <div>
         <DatePicker
