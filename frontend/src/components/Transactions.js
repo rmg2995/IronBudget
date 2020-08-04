@@ -153,6 +153,10 @@ class Transactions extends Component {
         new Date(income.startDate) < this.state.endDate
       );
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7d3c52b8b2f34408ab9c27a31818b09e15d44006
     expenseCopy.forEach((eachExpense) => {
       if (expenseObjCopy[eachExpense.expenseType]) {
         expenseObjCopy[eachExpense.expenseType] += eachExpense.amount;
