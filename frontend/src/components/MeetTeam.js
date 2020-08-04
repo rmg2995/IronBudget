@@ -4,7 +4,7 @@ export default class MeetTeam extends Component {
   render() {
     return (
       <div className="aboutus">
-        <h1 className="aboutTitle">About Us</h1>
+        <h1 className="aboutTitle">Meet The Team</h1>
         <div className="usinfo">
           <div className="roy">
             <h1>Roy Gutierrez</h1>

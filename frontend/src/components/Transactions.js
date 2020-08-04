@@ -148,7 +148,7 @@ class Transactions extends Component {
     ++today < 10 ? (today = "0" + today) : today.toString();
     let expenseCopy = [...this.state.transactionsexpense];
     let incomeCopy = [...this.state.transactionsincome];
-    // let expenseObjCopy = { ...this.state.expenseObj };
+    let expenseObjCopy = {};
     // if (this.state.toggleFilter == false) {
     expenseCopy = this.state.transactionsexpense.filter((expense) => {
       // return expense.startDate.slice(5, 7) === today;
@@ -164,6 +164,25 @@ class Transactions extends Component {
         new Date(income.startDate) < this.state.endDate
       );
     });
+
+    expenseCopy.forEach((eachExpense) => {
+      if (expenseObjCopy[eachExpense.expenseType]) {
+        expenseObjCopy[eachExpense.expenseType] += eachExpense.amount;
+      } else {
+        expenseObjCopy[eachExpense.expenseType] = eachExpense.amount;
+      }
+    });
+    let expenseAmount = 0;
+    for (let e of expenseCopy) {
+      // console.log(e);
+      if (e.amount) expenseAmount += e.amount;
+    }
+    let incomeAmount = 0;
+    for (let i of incomeCopy) {
+      // console.log(i);
+      if (i.amountIncome) incomeAmount += i.amountIncome;
+    }
+    let total = incomeAmount - expenseAmount;
     // expenseObjCopy = this.state.expenseObj.filter((total) => {
     //   // return income.startDate.slice(5, 7) === today;
     //   return (
@@ -176,7 +195,8 @@ class Transactions extends Component {
     this.setState({
       filterExpense: expenseCopy,
       filterIncome: incomeCopy,
-      // expenseObj: expenseObjCopy,
+      expenseObj: expenseObjCopy,
+      grandTotal: total,
       toggleFilter: !this.state.toggleFilter,
     });
   };
