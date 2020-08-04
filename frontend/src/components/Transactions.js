@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import actions from "../services/index";
-import "../components/styles/transactions.css";
+import "../components/styles/transactions.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -33,7 +33,7 @@ class Transactions extends Component {
     this.oneBigLoop(resExpense.data, resIncome.data);
   }
   displayTransactionsExpense = () => {
-    return this.state.filterExpense.map((eachTransaction) => {
+    return this.state.filterExpense.map((eachTransaction, i) => {
       if (eachTransaction.expenseType) {
         return (
           <li className="transactions">
@@ -41,12 +41,20 @@ class Transactions extends Component {
             {eachTransaction.startDate.slice(0, 10)} |
             {/* {eachTransaction.frequency} */}
             {eachTransaction.amount * -1}
+            <button onClick={() => this.deleteTransaction(i)}>Delete</button>
           </li>
         );
       }
       // this.setState({
       //   expenseAmount:{eachTransaction.amount}
       // })
+    });
+  };
+  deleteTransaction = (i) => {
+    let deleteExpense = [...this.state.filterExpense];
+    deleteExpense.splice(i, 1);
+    this.setState({
+      filterExpense: this.deleteTransaction,
     });
   };
   displayTransactionsIncome = () => {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import actions from "../../services/index";
-import "../styles/home.css";
+import "../styles/home.scss";
 import PieChart from "./PieChart";
 
 class Home extends Component {
