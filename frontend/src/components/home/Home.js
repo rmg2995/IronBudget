@@ -102,7 +102,9 @@ class Home extends Component {
           </button>
         </div>
         <div className="PieCharts">
+          <h2>Yearly Expense - Category Breakdown</h2>
           <PieChart data={data} />
+          <h2>Yearly Income Vs Expense Breakdown</h2>
           <PieChart data={data2} />
         </div>
         <div>
