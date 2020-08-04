@@ -50,6 +50,7 @@ class Transactions extends Component {
       // })
     });
   };
+
   deleteTransaction = (i) => {
     let deleteExpense = [...this.state.filterExpense];
     deleteExpense.splice(i, 1);
