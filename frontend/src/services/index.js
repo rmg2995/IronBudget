@@ -4,10 +4,8 @@ let baseURL;
 
 process.env.NODE_ENV === "production"
   ? (baseURL = "https://ironbudget.herokuapp.com")
-  : // (baseURL = "window.location.origin")
-
-    (baseURL = "http://localhost:5000");
-
+  : (baseURL = "http://localhost:5000");
+console.log(process.env.NODE_ENV, "monkey", baseURL);
 const service = axios.create({ withCredentials: true, baseURL });
 
 const actions = {
