@@ -4,20 +4,21 @@ const User = require("../models/User");
 const passport = require("../config/passport");
 
 router.post("/signup", (req, res, next) => {
-  User.register(req.body, req.body.password)
-    .then((user) => {
-      req.login(user, function (err, result) {
-        res.status(201).json(user);
+  if (req.body)
+    User.register(req.body, req.body.password)
+      .then((user) => {
+        req.login(user, function (err, result) {
+          res.status(201).json(user);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err });
       });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
 });
 
 //return await service.get('/is-logged-in');
-router.get("/is-logged-in", isAuth, (req, res, next) => {
+router.get("/is-logged-in", (req, res, next) => {
   console.log(req.user);
   res.json(req.user);
 });
