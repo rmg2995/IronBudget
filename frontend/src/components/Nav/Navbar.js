@@ -61,8 +61,8 @@ class Navbar extends Component {
             <Link className="menu-item" to="/add-transactions">
               Add Transactions
             </Link>
-            <Link className="menu-item" to="/about-us">
-              About Us
+            <Link className="menu-item" to="/meet-team">
+              Meet The Team
             </Link>
           </Menu>
         </div>

@@ -11,6 +11,7 @@ import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
 import Form from "./components/Form.jsx";
 import Transactions from "./components/Transactions";
+import MeetTeam from "./components/MeetTeam";
 class App extends Component {
   state = {};
 
@@ -94,7 +95,7 @@ class App extends Component {
               />
             )}
           />
-
+          <Route exact path="/meet-team" render={() => <MeetTeam />} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

@@ -11,6 +11,7 @@ class Transactions extends Component {
     filterExpense: [],
     filterIncome: [],
     toggleFilter: false,
+
     // startDate: new Date(),
     // endDate: new Date(),
   };
@@ -138,6 +139,7 @@ class Transactions extends Component {
     ++today < 10 ? (today = "0" + today) : today.toString();
     let expenseCopy = [...this.state.transactionsexpense];
     let incomeCopy = [...this.state.transactionsincome];
+    // let expenseObjCopy = { ...this.state.expenseObj };
     // if (this.state.toggleFilter == false) {
     expenseCopy = this.state.transactionsexpense.filter((expense) => {
       // return expense.startDate.slice(5, 7) === today;
@@ -153,11 +155,19 @@ class Transactions extends Component {
         new Date(income.startDate) < this.state.endDate
       );
     });
+    // expenseObjCopy = this.state.expenseObj.filter((total) => {
+    //   // return income.startDate.slice(5, 7) === today;
+    //   return (
+    //     new Date(total.startDate) > this.state.startDate &&
+    //     new Date(total.startDate) < this.state.endDate
+    //   );
+    // });
     // }
     // console.log(incomeCopy, expenseCopy);
     this.setState({
       filterExpense: expenseCopy,
       filterIncome: incomeCopy,
+      // expenseObj: expenseObjCopy,
       toggleFilter: !this.state.toggleFilter,
     });
   };
@@ -169,7 +179,8 @@ class Transactions extends Component {
         startDate: start,
         endDate: end,
       },
-      this.filterTransactions
+      this.filterTransactions,
+      this.displayExpenseObj
     );
 
     // setStartDate(start);
@@ -189,35 +200,11 @@ class Transactions extends Component {
           inline
         />
 
-        {/* <form action="/action_page.php" onSubmit={(e) => this.submitForm()}>
-          <label for="month">Month</label>
-          <select onChange={this.handleChange} name="month" id="">
-            <option value="" disabled selected>
-              Select Month
-            </option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-          <br />
-        </form> */}
-        <button onClick={this.filterTransactions}>Date filter by month</button>
-
         <p>Expense</p>
         {this.displayTransactionsExpense()}
         <p>Income</p>
         {this.displayTransactionsIncome()}
-        {/* {this.totalTransactionsExpense()} */}
-        {/* {this.totalTransactionsIncome()} */}
+
         {this.state.grandTotal}
         <br />
         <p>Categories total</p>
