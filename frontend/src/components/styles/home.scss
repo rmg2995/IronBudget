@@ -25,51 +25,56 @@
 }
 
 /* Character Styles */
-.unnamed-character-style-1 {
-  font-family: var(--unnamed-font-family-futura-pt);
-  font-style: var(--unnamed-font-style-medium);
-  font-size: var(--unnamed-font-size-32);
-  line-height: var(--unnamed-line-spacing-41);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-081390);
-}
-.unnamed-character-style-2 {
-  font-family: var(--unnamed-font-family-futura);
-  font-style: var(--unnamed-font-style-medium);
-  font-size: var(--unnamed-font-size-14);
-  line-height: var(--unnamed-line-spacing-19);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-081390);
-}
-.unnamed-character-style-3 {
-  font-family: var(--unnamed-font-family-futura);
-  font-style: var(--unnamed-font-style-medium);
-  font-size: var(--unnamed-font-size-14);
-  line-height: var(--unnamed-line-spacing-19);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-fefefe);
-}
-.unnamed-character-style-4 {
-  font-family: var(--unnamed-font-family-futura);
-  font-style: var(--unnamed-font-style-medium);
-  font-size: var(--unnamed-font-size-18);
-  line-height: var(--unnamed-line-spacing-25);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-081390);
-}
-.unnamed-character-style-5 {
-  font-family: var(--unnamed-font-family-futura);
-  font-style: var(--unnamed-font-style-bold);
-  font-size: var(--unnamed-font-size-20);
-  line-height: var(--unnamed-line-spacing-27);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-fefefe);
-}
+// .unnamed-character-style-1 {
+//   font-family: var(--unnamed-font-family-futura-pt);
+//   font-style: var(--unnamed-font-style-medium);
+//   font-size: var(--unnamed-font-size-32);
+//   line-height: var(--unnamed-line-spacing-41);
+//   letter-spacing: var(--unnamed-character-spacing-0);
+//   color: var(--unnamed-color-081390);
+// }
+// .unnamed-character-style-2 {
+//   font-family: var(--unnamed-font-family-futura);
+//   font-style: var(--unnamed-font-style-medium);
+//   font-size: var(--unnamed-font-size-14);
+//   line-height: var(--unnamed-line-spacing-19);
+//   letter-spacing: var(--unnamed-character-spacing-0);
+//   color: var(--unnamed-color-081390);
+// }
+// .unnamed-character-style-3 {
+//   font-family: var(--unnamed-font-family-futura);
+//   font-style: var(--unnamed-font-style-medium);
+//   font-size: var(--unnamed-font-size-14);
+//   line-height: var(--unnamed-line-spacing-19);
+//   letter-spacing: var(--unnamed-character-spacing-0);
+//   color: var(--unnamed-color-fefefe);
+// }
+// .unnamed-character-style-4 {
+//   font-family: var(--unnamed-font-family-futura);
+//   font-style: var(--unnamed-font-style-medium);
+//   font-size: var(--unnamed-font-size-18);
+//   line-height: var(--unnamed-line-spacing-25);
+//   letter-spacing: var(--unnamed-character-spacing-0);
+//   color: var(--unnamed-color-081390);
+// }
+// .unnamed-character-style-5 {
+//   font-family: var(--unnamed-font-family-futura);
+//   font-style: var(--unnamed-font-style-bold);
+//   font-size: var(--unnamed-font-size-20);
+//   line-height: var(--unnamed-line-spacing-27);
+//   letter-spacing: var(--unnamed-character-spacing-0);
+//   color: var(--unnamed-color-fefefe);
+// }
 
 /* Added styling to income and expense buttons */
 .buttons {
   display: flex;
   justify-content: space-evenly;
+}
+
+//
+h1 {
+  color: #fefefe;
 }
 
 .income-button {
@@ -78,7 +83,7 @@
   width: 144px;
   height: 58px;
   background: var(--unnamed-color-8be066) 0% 0% no-repeat padding-box;
-  background: #8be066 0% 0% no-repeat padding-box;
+  background: rgba(119, 171, 68, 1) 0% 0% no-repeat padding-box;
   box-shadow: -4px 4px 4px #00000029;
   opacity: 1;
   font: Bold var(--unnamed-font-size-20) / var(--unnamed-line-spacing-27)

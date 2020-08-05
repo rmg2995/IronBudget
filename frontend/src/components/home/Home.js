@@ -90,9 +90,8 @@ class Home extends Component {
     );
 
     return (
-      // <body className="body"> consider background color for body?
       <div>
-        <p className="unnamed-character-style-4">MY WALLET</p>
+        <h1>My Wallet</h1>
         <div className="buttons">
           <button className="income-button">
             Income <br />${this.state.incomeAmount}
@@ -108,7 +107,7 @@ class Home extends Component {
           <PieChart data={data2} />
         </div>
         <div>
-          <p className="unnamed-character-style-4">Transactions</p>
+          <h1>Transactions</h1>
           <p className="transaction-display">{this.displayExpenseObj()}</p>
         </div>
       </div>

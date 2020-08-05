@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/navbar.scss";
 import { Link } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
+import Logo from "../images/iron-budget-logo.png";
 // import Search from "./Search/search";
 
 class Navbar extends Component {
@@ -36,7 +37,7 @@ class Navbar extends Component {
         <div className="navbar-phone">
           {console.log(this.props)}
           <Link to="/">
-            <h1>IronBudget</h1>
+            <img src={Logo} alt="iron-budget-logo" />
           </Link>
 
           <Menu right>
