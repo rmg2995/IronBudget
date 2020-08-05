@@ -22,6 +22,7 @@ const actions = {
     return await service.get("/logout");
   },
   expenseCount: async (expenseLog) => {
+    console.log(expenseLog);
     return await service.post("/expense", expenseLog);
   },
   incomeCount: async (incomeLog) => {

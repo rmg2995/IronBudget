@@ -7,10 +7,21 @@ router.get("/", (req, res, next) => {
 
 router.post("/expense", isAuth, async (req, res, next) => {
   console.log(req.body);
-  let response = await Expense.create(req.body);
-  // console.log(response);
-  res.json(response);
+  console.log(req.user, "letsgo");
+  try {
+    let response = await Expense.create(req.body);
+    // console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+  }
 });
+//  try {
+//    var quote = await getQuote();
+//    console.log(quote);
+//  } catch (error) {
+//    console.error(error);
+//  }
 router.post("/income", isAuth, async (req, res, next) => {
   console.log(req.body);
   let response = await Income.create(req.body);
