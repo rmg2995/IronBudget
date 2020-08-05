@@ -46,6 +46,7 @@ router.get("/transactionsincome", isAuth, async (req, res) => {
   res.json(response);
 });
 function isAuth(req, res, next) {
+  console.log("line 37 transaction expense", req.user, "more text");
   req.isAuthenticated()
     ? next()
     : res.status(401).json({ msg: "Log in first" });
