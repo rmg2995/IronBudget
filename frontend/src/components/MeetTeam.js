@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 export default class MeetTeam extends Component {
   render() {
     return (
@@ -13,7 +12,6 @@ export default class MeetTeam extends Component {
               <a href="https://github.com/rmg2995" target="_blank">
                 GitHub
               </a>
-
               <div>|</div>
               <a href="https://www.linkedin.com/in/rmg2995/" target="_blank">
                 LinkedIn

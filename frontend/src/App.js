@@ -12,6 +12,7 @@ import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
 import Form from "./components/Form.jsx";
 import Transactions from "./components/Transactions";
 import MeetTeam from "./components/MeetTeam";
+console.log(process.env);
 class App extends Component {
   state = {};
 
