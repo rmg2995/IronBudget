@@ -1,8 +1,13 @@
 .transactions {
   list-style: none;
+  padding-bottom: 10vh;
 }
 
 .transaction-style {
   display: flex;
   justify-content: space-around;
+}
+.delete-btn {
+  background: #fd6060 0% 0% no-repeat padding-box;
+  color: white;
 }

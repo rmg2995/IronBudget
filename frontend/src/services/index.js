@@ -13,6 +13,7 @@ const actions = {
     return await service.get("/is-logged-in");
   },
   signUp: async (user) => {
+    console.log();
     return await service.post("/signup", user);
   },
   logIn: async (user) => {

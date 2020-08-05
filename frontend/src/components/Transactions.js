@@ -35,9 +35,13 @@ class Transactions extends Component {
         return (
           <li className="transactions">
             {eachTransaction.expenseType} |
-            {eachTransaction.startDate.slice(0, 10)} |
-            {eachTransaction.amount * -1}
-            <button onClick={() => this.deleteTransaction(i)}>Delete</button>
+            {eachTransaction.startDate.slice(0, 10)} |${eachTransaction.amount}
+            <button
+              className="delete-btn"
+              onClick={() => this.deleteTransaction(i)}
+            >
+              Delete
+            </button>
           </li>
         );
       }
@@ -81,7 +85,7 @@ class Transactions extends Component {
           <li className="transactions">
             {eachTransaction.incomeType} |
             {eachTransaction.startDate.slice(0, 10)} |
-            {/* {eachTransaction.frequencyIncome} */}
+            {/* {eachTransaction.frequencyIncome} */}$
             {eachTransaction.amountIncome}
           </li>
         );
@@ -218,15 +222,13 @@ class Transactions extends Component {
           selectsRange
           inline
         />
-        <h1>Expense</h1>
-        {this.displayTransactionsExpense()}
         <h1>Income</h1>
         {this.displayTransactionsIncome()}
-
-        {this.state.grandTotal}
+        <h1>Expense</h1>
+        {this.displayTransactionsExpense()}
+        <h1>Net Profit</h1>${this.state.grandTotal}
         <br />
         <h1>Categories Total</h1>
-
         {this.displayExpenseObj()}
       </div>
     );
