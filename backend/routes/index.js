@@ -34,7 +34,7 @@ router.get("/transactions", async (req, res) => {
   res.json(response);
 });
 router.get("/transactionsexpense", isAuth, async (req, res) => {
-  console.log(req.user);
+  console.log("line 37 transaction expense", req.user, "more text");
   let response = await Expense.find({ user: req.user._id });
   // console.log(response);
   res.json(response);
