@@ -5,7 +5,7 @@ router.get("/", (req, res, next) => {
   res.status(200).json({ msg: "Working" });
 });
 
-router.post("/expense", isAuth, async (req, res, next) => {
+router.post("/expense", async (req, res, next) => {
   console.log(req.body);
   console.log(req.user, "letsgo");
   try {
