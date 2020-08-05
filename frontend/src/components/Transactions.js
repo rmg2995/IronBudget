@@ -209,6 +209,7 @@ class Transactions extends Component {
     console.log("looking 199", this.state);
     return (
       <div>
+        <br />
         <DatePicker
           selected={this.state.startDate}
           onChange={this.onChange}
@@ -217,15 +218,14 @@ class Transactions extends Component {
           selectsRange
           inline
         />
-
-        <p>Expense</p>
+        <h1>Expense</h1>
         {this.displayTransactionsExpense()}
-        <p>Income</p>
+        <h1>Income</h1>
         {this.displayTransactionsIncome()}
 
         {this.state.grandTotal}
         <br />
-        <p>Categories total</p>
+        <h1>Categories Total</h1>
 
         {this.displayExpenseObj()}
       </div>
