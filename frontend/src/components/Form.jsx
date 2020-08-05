@@ -47,7 +47,9 @@ class Form extends Component {
           onSubmit={(e) => this.submitForm(e, "e")}
         >
           <div className="expense-spacing">
-            <label for="Expense">Expense</label>
+            <label className="labels" for="Expense">
+              Expense
+            </label>
             <select
               className="select-expense-income"
               onChange={this.handleChange}
@@ -80,7 +82,8 @@ class Form extends Component {
           </select>
           <br /> */}
           <div className="expense-spacing">
-            <label>Amount</label>
+            <label className="labels">Amount</label>
+
             <input
               className="enter-amount"
               onChange={this.handleChange}
@@ -93,7 +96,7 @@ class Form extends Component {
             ></input>
           </div>
           <div className="expense-spacing">
-            <label>Date</label>
+            <label className="labels">Date</label>
             <DatePicker
               className="select-date"
               name="startDate"
@@ -109,20 +112,21 @@ class Form extends Component {
           <button className="submit-button">Submit</button>
         </form>
         <form action="/action_page.php" onSubmit={(e) => this.submitForm(e)}>
-          <label for="Income">Income</label>
-          <select
-            className="select-expense-income"
-            onChange={this.handleChange}
-            name="incomeType"
-            id=""
-          >
-            <option value="" disabled selected>
-              Select Income
-            </option>
-            <option value="wage">Wage</option>
-            <option value="tip">Tip</option>
-          </select>
-          <br />
+          <div className="expense-spacing">
+            <label for="Income">Income</label>
+            <select
+              className="select-expense-income"
+              onChange={this.handleChange}
+              name="incomeType"
+              id=""
+            >
+              <option value="" disabled selected>
+                Select Income
+              </option>
+              <option value="wage">Wage</option>
+              <option value="tip">Tip</option>
+            </select>
+          </div>
           {/* <label for="Income">Frequency</label>
           <select onChange={this.handleChange} name="frequencyIncome" id="">
             <option value="" disabled selected>
@@ -133,31 +137,33 @@ class Form extends Component {
             <option value="monthly">Monthly</option>
           </select>
           <br /> */}
-          <label>Amount $</label>
-          <input
-            className="enter-amount"
-            onChange={this.handleChange}
-            type="Number"
-            step="0.01"
-            id=""
-            name="amountIncome"
-            step="0.01"
-            min="0"
-          ></input>
-          <br />
+          <div className="expense-spacing">
+            <label>Amount</label>
+            <input
+              className="enter-amount"
+              onChange={this.handleChange}
+              type="Number"
+              step="0.01"
+              id=""
+              name="amountIncome"
+              step="0.01"
+              min="0"
+            ></input>
+          </div>
           {/* <DatePicker
             name="dateIncome"
             onChange={this.onChange}
             value={this.state.date}
           /> */}
-          <label>Date</label>
-          <DatePicker
-            className="select-date"
-            name="startDate"
-            selected={this.state.startDate}
-            onChange={this.onChange}
-          />
-          <br />
+          <div className="expense-spacing">
+            <label>Date</label>
+            <DatePicker
+              className="select-date"
+              name="startDate"
+              selected={this.state.startDate}
+              onChange={this.onChange}
+            />
+          </div>
           <button className="submit-button">Submit</button>
         </form>
       </div>

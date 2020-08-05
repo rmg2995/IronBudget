@@ -25,7 +25,8 @@
 
 // styling for both expense and income date buttons
 .select-date {
-  width: 23vw;
+  margin-left: 4vw;
+  width: 14vw;
   height: 2.5vh;
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
   border: 2px solid rgba(62, 62, 62, 1);
@@ -46,6 +47,6 @@
 .expense-spacing {
   display: flex;
   justify-content: space-evenly;
-  align-items: space-evenly;
-  margin: 2vh;
+  flex-direction: row;
+  margin: 2vh 0;
 }
