@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import actions from "../services/index";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles/form.scss";
 // import DatePicker from "react-date-picker";
 
 class Form extends Component {
@@ -45,23 +46,30 @@ class Form extends Component {
           action="/action_page.php"
           onSubmit={(e) => this.submitForm(e, "e")}
         >
-          <label for="Expense">Expense</label>
-          <select onChange={this.handleChange} name="expenseType" id="">
-            <option value="" disabled selected>
-              Select Expense
-            </option>
-            <option value="entertainment">Entertainment</option>
-            <option value="restaurant">Restaurant</option>
-            <option value="bills">Bills</option>
-            <option value="groceries">Groceries</option>
-            <option value="transportation">Transportation</option>
-            <option value="education">Education</option>
-            <option value="home">Home</option>
-            <option value="clothing">Clothing</option>
-            <option value="travel">Travel</option>
-          </select>
-          <br />
-          <label for="Expense">Frequency</label>
+          <div className="expense-spacing">
+            <label for="Expense">Expense</label>
+            <select
+              className="select-expense-income"
+              onChange={this.handleChange}
+              name="expenseType"
+              id=""
+            >
+              <option value="" disabled selected>
+                Select Expense
+              </option>
+              <option value="entertainment">Entertainment</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="bills">Bills</option>
+              <option value="groceries">Groceries</option>
+              <option value="transportation">Transportation</option>
+              <option value="education">Education</option>
+              <option value="home">Home</option>
+              <option value="clothing">Clothing</option>
+              <option value="travel">Travel</option>
+            </select>
+          </div>
+          {/* <br /> */}
+          {/* <label for="Expense">Frequency</label>
           <select onChange={this.handleChange} name="frequency" id="">
             <option value="" disabled selected>
               Select Frequency
@@ -70,34 +78,44 @@ class Form extends Component {
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
-          <br />
-          <label>Amount $</label>
-          <input
-            onChange={this.handleChange}
-            type="Number"
-            step="0.01"
-            id=""
-            name="amount"
-            step="0.01"
-            min="0"
-          ></input>
-          <br />
-          <DatePicker
-            name="startDate"
-            selected={this.state.startDate}
-            onChange={this.onChange}
-          />
-          {/* <DatePicker
+          <br /> */}
+          <div className="expense-spacing">
+            <label>Amount</label>
+            <input
+              className="enter-amount"
+              onChange={this.handleChange}
+              type="Number"
+              step="0.01"
+              id=""
+              name="amount"
+              step="0.01"
+              min="0"
+            ></input>
+          </div>
+          <div className="expense-spacing">
+            <label>Date</label>
+            <DatePicker
+              className="select-date"
+              name="startDate"
+              selected={this.state.startDate}
+              onChange={this.onChange}
+            />
+            {/* <DatePicker
             name="date"
             onChange={this.onChange}
             value={this.state.date}
           /> */}
-          <br />
-          <button>Submit</button>
+          </div>
+          <button className="submit-button">Submit</button>
         </form>
         <form action="/action_page.php" onSubmit={(e) => this.submitForm(e)}>
           <label for="Income">Income</label>
-          <select onChange={this.handleChange} name="incomeType" id="">
+          <select
+            className="select-expense-income"
+            onChange={this.handleChange}
+            name="incomeType"
+            id=""
+          >
             <option value="" disabled selected>
               Select Income
             </option>
@@ -105,7 +123,7 @@ class Form extends Component {
             <option value="tip">Tip</option>
           </select>
           <br />
-          <label for="Income">Frequency</label>
+          {/* <label for="Income">Frequency</label>
           <select onChange={this.handleChange} name="frequencyIncome" id="">
             <option value="" disabled selected>
               Select Frequency
@@ -114,9 +132,10 @@ class Form extends Component {
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
-          <br />
+          <br /> */}
           <label>Amount $</label>
           <input
+            className="enter-amount"
             onChange={this.handleChange}
             type="Number"
             step="0.01"
@@ -131,13 +150,15 @@ class Form extends Component {
             onChange={this.onChange}
             value={this.state.date}
           /> */}
+          <label>Date</label>
           <DatePicker
+            className="select-date"
             name="startDate"
             selected={this.state.startDate}
             onChange={this.onChange}
           />
           <br />
-          <button>Submit</button>
+          <button className="submit-button">Submit</button>
         </form>
       </div>
     );

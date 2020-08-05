@@ -36,6 +36,7 @@ class App extends Component {
 
   render() {
     return (
+      // <div className="form-body"> purple background color for all pages
       <BrowserRouter>
         <Navbar />
         {/* <Form userId={this.state}></Form> */}
@@ -101,6 +102,7 @@ class App extends Component {
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
+      // </div>
     );
   }
 }
