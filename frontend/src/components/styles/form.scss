@@ -1,3 +1,4 @@
+@import "../breakpoints/breakpoints.scss";
 .form-body {
   background-color: rgba(12, 0, 54, 1);
   color: rgba(119, 171, 68, 1);
@@ -6,8 +7,16 @@
 // styling for select expense and select income buttons
 .select-expense-income {
   //   padding-left: 5vw;
-  width: 25vw;
-  height: 3vh;
+  @include media("<=phone") {
+    width: 40vw;
+    height: 3vh;
+  }
+  @include media(">phone") {
+    // margin-left: 4vw;
+    width: 8vw;
+    height: 2.5vh;
+  }
+  // width: 25vw;
   background: #f9f9f9 0% 0% no-repeat padding-box;
   border-radius: 24px;
   opacity: 1;
@@ -16,8 +25,17 @@
 
 // styling for enter amount button for both expense and income
 .enter-amount {
-  width: 23vw;
-  height: 2.5vh;
+  @include media("<=phone") {
+    width: 35vw;
+    height: 2.5vh;
+  }
+  @include media(">phone") {
+    // margin-left: 4vw;
+    width: 7vw;
+    height: 2.5vh;
+  }
+  // width: 23vw;
+  // height: 2.5vh;
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
   border: 2px solid rgba(62, 62, 62, 1);
   opacity: 1;
@@ -26,9 +44,15 @@
 
 // styling for both expense and income date buttons
 .select-date {
-  margin-left: 4vw;
-  width: 14vw;
-  height: 2.5vh;
+  @include media("<=phone") {
+    width: 25vw;
+    height: 3vh;
+  }
+  @include media(">phone") {
+    // margin-left: 4vw;
+    width: 5vw;
+    height: 2.5vh;
+  }
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
   border: 2px solid rgba(62, 62, 62, 1);
   opacity: 1;
@@ -37,8 +61,17 @@
 
 // styling for both income and expense buttons
 .submit-button {
-  width: 10vw;
-  height: 2.5vh;
+  @include media("<=phone") {
+    width: 25vw;
+    height: 3vh;
+  }
+  @include media(">phone") {
+    // margin-left: 4vw;
+    width: 5vw;
+    height: 2.5vh;
+  }
+  // width: 10vw;
+  // height: 2.5vh;
   background: var(--unnamed-color-77ab44) 0% 0% no-repeat padding-box;
   background: rgba(119, 171, 68, 1) 0% 0% no-repeat padding-box;
   opacity: 1;

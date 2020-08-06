@@ -104,8 +104,8 @@ class Home extends Component {
         }
       );
     }
-    console.log(JSON.stringify(data));
-    console.log(JSON.stringify(data2));
+    // console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data2));
     return (
       <div>
         <h1>My Wallet</h1>

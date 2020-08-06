@@ -1,3 +1,4 @@
+@import "./components/breakpoints/breakpoints.scss";
 body {
   margin: 0;
   text-align: center;
@@ -16,4 +17,11 @@ code {
 
 .nav-links {
   color: white;
+}
+
+@include media("<=phone") {
+  @import "./components/styles/form.scss";
+  @import "./components/styles/home.scss";
+  @import "./components/styles/navbar.scss";
+  @import "./components/styles/transactions.scss";
 }

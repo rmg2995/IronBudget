@@ -242,7 +242,7 @@ class Transactions extends Component {
           inline
         />
         <h1>Income</h1>
-        <table>
+        <table className="table">
           <thead>
             <tr>
               <th>Category</th>
@@ -254,7 +254,7 @@ class Transactions extends Component {
           <tbody>{this.displayTransactionsIncome()}</tbody>
         </table>
         <h1>Expense</h1>
-        <table>
+        <table className="table">
           <thead>
             <tr>
               <th>Category</th>
