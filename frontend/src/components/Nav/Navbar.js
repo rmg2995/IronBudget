@@ -53,9 +53,9 @@ class Navbar extends Component {
               Log in
             </Link>
 
-            <Link className="menu-item" to="/profile">
+            {/* <Link className="menu-item" to="/profile">
               Profile
-            </Link>
+            </Link> */}
             <Link className="menu-item" to="/transactions">
               Transactions
             </Link>

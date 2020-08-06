@@ -49,12 +49,12 @@ class App extends Component {
               <Fragment>
                 <h3>Welcome Back, {this.state.email}!</h3>
                 <NavLink className="nav-links" onClick={this.logOut} to="/">
-                  Log Out |
+                  Log Out
                 </NavLink>
-                <NavLink className="nav-links" to="/profile">
+                {/* <NavLink className="nav-links" to="/profile">
                   {" "}
-                  Profile
-                </NavLink>
+                  P
+                </NavLink> */}
               </Fragment>
             ) : (
               <Fragment>

@@ -26,10 +26,7 @@ export default class MeetTeam extends Component {
                 GitHub
               </a>
               <div>|</div>
-              <a
-                href="https://www.linkedin.com/in/matthewjmanzo"
-                target="_blank"
-              >
+              <a href="https://www.linkedin.com/in/mattjmanzo" target="_blank">
                 LinkedIn
               </a>
             </div>
