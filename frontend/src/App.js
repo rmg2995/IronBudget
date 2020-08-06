@@ -40,12 +40,14 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           {/* <Form userId={this.state}></Form> */}
-          {this.state.email}
+
+          {/* {this.state.email} */}
           <nav>
             {/* <NavLink to="/">Home |</NavLink> */}
 
             {this.state.email ? (
               <Fragment>
+                <h3>Welcome Back, {this.state.email}!</h3>
                 <NavLink onClick={this.logOut} to="/">
                   Log Out |
                 </NavLink>
