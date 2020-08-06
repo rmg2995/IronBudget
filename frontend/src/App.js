@@ -48,15 +48,22 @@ class App extends Component {
             {this.state.email ? (
               <Fragment>
                 <h3>Welcome Back, {this.state.email}!</h3>
-                <NavLink onClick={this.logOut} to="/">
+                <NavLink className="nav-links" onClick={this.logOut} to="/">
                   Log Out |
                 </NavLink>
-                <NavLink to="/profile">Profile|</NavLink>
+                <NavLink className="nav-links" to="/profile">
+                  {" "}
+                  Profile
+                </NavLink>
               </Fragment>
             ) : (
               <Fragment>
-                <NavLink to="/sign-up">Sign Up |</NavLink>
-                <NavLink to="/log-in">Log In |</NavLink>
+                <NavLink className="nav-links" to="/sign-up">
+                  Sign Up |
+                </NavLink>
+                <NavLink className="nav-links" to="/log-in">
+                  Log In{" "}
+                </NavLink>
               </Fragment>
             )}
             <br />
