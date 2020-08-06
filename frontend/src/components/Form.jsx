@@ -36,7 +36,8 @@ class Form extends Component {
       type === "e"
         ? await actions.expenseCount(obj)
         : await actions.incomeCount(obj);
-    console.log(res);
+    alert("Success! You have added a transaction!");
+    // this.formRef.reset();
   };
 
   render() {
@@ -113,7 +114,9 @@ class Form extends Component {
         </form>
         <form action="/action_page.php" onSubmit={(e) => this.submitForm(e)}>
           <div className="expense-spacing">
-            <label for="Income">Income</label>
+            <label className="labels" for="Income">
+              Income
+            </label>
             <select
               className="select-expense-income"
               onChange={this.handleChange}
@@ -138,7 +141,7 @@ class Form extends Component {
           </select>
           <br /> */}
           <div className="expense-spacing">
-            <label>Amount</label>
+            <label className="labels">Amount</label>
             <input
               className="enter-amount"
               onChange={this.handleChange}
@@ -156,7 +159,7 @@ class Form extends Component {
             value={this.state.date}
           /> */}
           <div className="expense-spacing">
-            <label>Date</label>
+            <label className="labels">Date</label>
             <DatePicker
               className="select-date"
               name="startDate"

@@ -6,7 +6,7 @@ export default class MeetTeam extends Component {
         <h1 className="aboutTitle">Meet The Team</h1>
         <div className="usinfo">
           <div className="roy">
-            <h1>Roy Gutierrez</h1>
+            <h2>Roy Gutierrez</h2>
             <p>From: Miami, FL</p>
             <div className="githubLinkedIn">
               <a href="https://github.com/rmg2995" target="_blank">
@@ -19,7 +19,7 @@ export default class MeetTeam extends Component {
             </div>
           </div>
           <div className="valerie">
-            <h1>Matthew Manzo</h1>
+            <h2>Matthew Manzo</h2>
             <p>From: Davie, FL</p>
             <div className="githubLinkedIn">
               <a href="https://github.com/mattjmanzo" target="_blank">

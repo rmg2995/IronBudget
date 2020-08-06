@@ -45,6 +45,14 @@ router.get("/transactionsincome", isAuth, async (req, res) => {
   // console.log(response);
   res.json(response);
 });
+router.post("/expense/:id/delete", isAuth, async (req, res) => {
+  let response = await Expense.findByIdAndDelete(req.params.id);
+  res.json(response);
+});
+router.post("/income/:id/delete", isAuth, async (req, res) => {
+  let response = await Income.findByIdAndDelete(req.params.id);
+  res.json(response);
+});
 function isAuth(req, res, next) {
   console.log("line 37 transaction expense", req.user, "more text");
   req.isAuthenticated()

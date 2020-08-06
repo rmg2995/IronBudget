@@ -38,6 +38,9 @@ const actions = {
   transactionsincome: async (user) => {
     return await service.get(`/transactionsincome?id=${user}`);
   },
+  expenseDelete: async (id, list) => {
+    return await service.post(`/${list}/${id}/delete`);
+  },
 };
 
 export default actions;

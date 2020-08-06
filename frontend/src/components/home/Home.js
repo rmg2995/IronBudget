@@ -63,7 +63,7 @@ class Home extends Component {
     for (let e in this.state.expenseObj) {
       displayExpense.push(
         <li className="transaction-list">
-          {e} ${this.state.expenseObj[e]}
+          {e.toUpperCase()}: ${this.state.expenseObj[e]}
         </li>
       );
     }
@@ -118,14 +118,18 @@ class Home extends Component {
           </button>
         </div>
         <div className="PieCharts">
-          <h2>Yearly Expense - Category Breakdown</h2>
-          <PieChart data={data} />
-          <h2>Yearly Income Vs Expense Breakdown</h2>
-          <PieChart data={data2} />
+          <div>
+            <h2>Yearly Expense - Category Breakdown</h2>
+            <PieChart data={data} />
+          </div>
+          <div>
+            <h2>Yearly Income Vs Expense Breakdown</h2>
+            <PieChart data={data2} />
+          </div>
         </div>
         <div>
           <h1>Transactions</h1>
-          <p className="transaction-display">{this.displayExpenseObj()}</p>
+          <div className="transaction-display">{this.displayExpenseObj()}</div>
         </div>
       </div>
       // </body>

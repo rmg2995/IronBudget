@@ -22,8 +22,27 @@
     // justify-content: center;
     // align-content: center;
     // flex-direction: column;
-    padding: 0 45vw;
+    padding: 0 42vw;
+  }
+  td {
+    white-space: nowrap;
   }
   // display: flex;
   // justify-content: center;
+}
+.expense-table {
+  @include media("<=phone") {
+    padding: 0 30px;
+  }
+  @include media(">phone") {
+    // margin-left: 4vw;
+    // display: flex;
+    // justify-content: center;
+    // align-content: center;
+    // flex-direction: column;
+    padding: 0 41vw;
+  }
+}
+.expense-obj {
+  padding-bottom: 10vh;
 }

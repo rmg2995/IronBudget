@@ -39,7 +39,9 @@ class Transactions extends Component {
             <td>${eachTransaction.amount}</td>
             <button
               className="delete-btn"
-              onClick={() => this.deleteTransaction(i, "deleteExpense")}
+              onClick={() =>
+                this.deleteTransaction(i, eachTransaction._id, "expense")
+              }
             >
               Delete
             </button>
@@ -49,10 +51,12 @@ class Transactions extends Component {
     });
   };
 
-  deleteTransaction = (i, list) => {
+  deleteTransaction = async (i, id, list) => {
     let deleteExpense = [...this.state.filterExpense];
     let deleteIncome = [...this.state.filterIncome];
-    if (list == "deleteExpense") {
+    const response = await actions.expenseDelete(id, list);
+    console.log(response.data);
+    if (list == "expense") {
       deleteExpense.splice(i, 1);
     } else {
       deleteIncome.splice(i, 1);
@@ -88,21 +92,24 @@ class Transactions extends Component {
     this.setState({
       filterExpense: deleteExpense,
       filterIncome: deleteIncome,
+
       grandTotal: total,
       expenseObj: expenseObjCopy,
     });
   };
-  displayTransactionsIncome = (i) => {
-    return this.state.filterIncome.map((eachTransaction) => {
+  displayTransactionsIncome = () => {
+    return this.state.filterIncome.map((eachTransaction, i) => {
       if (eachTransaction.incomeType) {
         return (
           <tr className="row">
             <td>{eachTransaction.incomeType}</td>
             <td>{eachTransaction.startDate.slice(0, 10)}</td>
-            <td>{eachTransaction.amountIncome}</td>
+            <td>${eachTransaction.amountIncome}</td>
             <button
               className="delete-btn"
-              onClick={() => this.deleteTransaction(i, "deleteIncome")}
+              onClick={() =>
+                this.deleteTransaction(i, eachTransaction._id, "income")
+              }
             >
               Delete
             </button>
@@ -148,7 +155,7 @@ class Transactions extends Component {
     for (let e in this.state.expenseObj) {
       displayExpense.push(
         <li className="transactions">
-          {e} ${this.state.expenseObj[e]}
+          {e.toUpperCase()} ${this.state.expenseObj[e]}
         </li>
       );
     }
@@ -254,7 +261,7 @@ class Transactions extends Component {
           <tbody>{this.displayTransactionsIncome()}</tbody>
         </table>
         <h1>Expense</h1>
-        <table className="table">
+        <table className="table expense-table">
           <thead>
             <tr>
               <th>Category</th>
@@ -265,10 +272,10 @@ class Transactions extends Component {
           </thead>
           <tbody>{this.displayTransactionsExpense()}</tbody>
         </table>
-        <h1>Net Profit</h1>${this.state.grandTotal}
+        <h1>Net Income</h1>${this.state.grandTotal}
         <br />
         <h1>Categories Total</h1>
-        {this.displayExpenseObj()}
+        <div className="expense-obj">{this.displayExpenseObj()}</div>
       </div>
     );
   }
