@@ -33,16 +33,17 @@ class Transactions extends Component {
     return this.state.filterExpense?.map((eachTransaction, i) => {
       if (eachTransaction.expenseType) {
         return (
-          <li className="transactions">
-            {eachTransaction.expenseType} |
-            {eachTransaction.startDate.slice(0, 10)} |${eachTransaction.amount}
+          <tr className="row">
+            <td>{eachTransaction.expenseType}</td>
+            <td>{eachTransaction.startDate.slice(0, 10)}</td>
+            <td>${eachTransaction.amount}</td>
             <button
               className="delete-btn"
               onClick={() => this.deleteTransaction(i, "deleteExpense")}
             >
               Delete
             </button>
-          </li>
+          </tr>
         );
       }
     });
@@ -95,18 +96,17 @@ class Transactions extends Component {
     return this.state.filterIncome.map((eachTransaction) => {
       if (eachTransaction.incomeType) {
         return (
-          <li className="transactions">
-            {eachTransaction.incomeType} |
-            {eachTransaction.startDate.slice(0, 10)} |
-            {/* {eachTransaction.frequencyIncome} */}$
-            {eachTransaction.amountIncome}
+          <tr className="row">
+            <td>{eachTransaction.incomeType}</td>
+            <td>{eachTransaction.startDate.slice(0, 10)}</td>
+            <td>{eachTransaction.amountIncome}</td>
             <button
               className="delete-btn"
               onClick={() => this.deleteTransaction(i, "deleteIncome")}
             >
               Delete
             </button>
-          </li>
+          </tr>
         );
       }
     });
@@ -242,9 +242,29 @@ class Transactions extends Component {
           inline
         />
         <h1>Income</h1>
-        {this.displayTransactionsIncome()}
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>{this.displayTransactionsIncome()}</tbody>
+        </table>
         <h1>Expense</h1>
-        {this.displayTransactionsExpense()}
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>{this.displayTransactionsExpense()}</tbody>
+        </table>
         <h1>Net Profit</h1>${this.state.grandTotal}
         <br />
         <h1>Categories Total</h1>
