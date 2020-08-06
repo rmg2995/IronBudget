@@ -38,7 +38,7 @@ class Transactions extends Component {
             {eachTransaction.startDate.slice(0, 10)} |${eachTransaction.amount}
             <button
               className="delete-btn"
-              onClick={() => this.deleteTransaction(i)}
+              onClick={() => this.deleteTransaction(i, "deleteExpense")}
             >
               Delete
             </button>
@@ -48,17 +48,21 @@ class Transactions extends Component {
     });
   };
 
-  deleteTransaction = (i) => {
+  deleteTransaction = (i, list) => {
     let deleteExpense = [...this.state.filterExpense];
-
-    deleteExpense.splice(i, 1);
+    let deleteIncome = [...this.state.filterIncome];
+    if (list == "deleteExpense") {
+      deleteExpense.splice(i, 1);
+    } else {
+      deleteIncome.splice(i, 1);
+    }
     let expenseAmount = 0;
     for (let e of deleteExpense) {
       // console.log(e);
       if (e.amount) expenseAmount += e.amount;
     }
     let incomeAmount = 0;
-    for (let i of this.state.filterIncome) {
+    for (let i of deleteIncome) {
       // console.log(i);
       if (i.amountIncome) incomeAmount += i.amountIncome;
     }
@@ -70,15 +74,24 @@ class Transactions extends Component {
         expenseObjCopy[eachExpense.expenseType] = eachExpense.amount;
       }
     });
+    let incomeObjCopy = {};
+    deleteExpense.forEach((eachIncome) => {
+      if (incomeObjCopy[eachIncome.incomeType]) {
+        incomeObjCopy[eachIncome.incomeType] += eachIncome.amount;
+      } else {
+        incomeObjCopy[eachIncome.incomeType] = eachIncome.amount;
+      }
+    });
     let total = incomeAmount - expenseAmount;
 
     this.setState({
       filterExpense: deleteExpense,
+      filterIncome: deleteIncome,
       grandTotal: total,
       expenseObj: expenseObjCopy,
     });
   };
-  displayTransactionsIncome = () => {
+  displayTransactionsIncome = (i) => {
     return this.state.filterIncome.map((eachTransaction) => {
       if (eachTransaction.incomeType) {
         return (
@@ -87,6 +100,12 @@ class Transactions extends Component {
             {eachTransaction.startDate.slice(0, 10)} |
             {/* {eachTransaction.frequencyIncome} */}$
             {eachTransaction.amountIncome}
+            <button
+              className="delete-btn"
+              onClick={() => this.deleteTransaction(i, "deleteIncome")}
+            >
+              Delete
+            </button>
           </li>
         );
       }

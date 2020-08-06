@@ -7,6 +7,8 @@ class Home extends Component {
   state = {
     transactionsexpense: [],
     transactionsincome: [],
+    incomeAmount: Math.floor(Math.random() * 10000),
+    expenseAmount: Math.floor(Math.random() * 1000),
   };
   async componentDidMount() {
     // console.log("hey", this.props);
@@ -70,25 +72,40 @@ class Home extends Component {
 
   render() {
     console.log(this);
-    const data = [];
-    const data2 = [];
-    for (let e in this.state.expenseObj) {
-      data.push({
-        name: e,
-        value: this.state.expenseObj[e],
-      });
-    }
-    data2.push(
-      {
-        name: "income",
-        value: this.state.incomeAmount,
-      },
-      {
-        name: "expenses",
-        value: this.state.expenseAmount,
-      }
-    );
+    let data = [
+      { name: "entertainment", value: Math.floor(Math.random() * 100) },
+      { name: "bills", value: Math.floor(Math.random() * 100) },
+      { name: "groceries", value: Math.floor(Math.random() * 100) },
+      { name: "transportation", value: Math.floor(Math.random() * 100) },
+      // { name: "clothing", value: Math.floor(Math.random() * 100) },
+    ];
+    let data2 = [
+      { name: "income", value: Math.floor(Math.random() * 100) },
+      { name: "expenses", value: Math.floor(Math.random() * 100) },
+    ];
 
+    if (this.props.userId?._id) {
+      data = [];
+      data2 = [];
+      for (let e in this.state.expenseObj) {
+        data.push({
+          name: e,
+          value: this.state.expenseObj[e],
+        });
+      }
+      data2.push(
+        {
+          name: "income",
+          value: this.state.incomeAmount,
+        },
+        {
+          name: "expenses",
+          value: this.state.expenseAmount,
+        }
+      );
+    }
+    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data2));
     return (
       <div>
         <h1>My Wallet</h1>
