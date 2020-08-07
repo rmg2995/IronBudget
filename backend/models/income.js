@@ -1,7 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 const incomeSchema = new Schema({
-  incomeType: String,
+  incomeType: {
+    type: String,
+    enum: ["wage", "tip"],
+    required: true,
+  },
   frequencyIncome: String,
   amountIncome: Number,
   startDate: Date,
