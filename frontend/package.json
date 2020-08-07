@@ -16,7 +16,7 @@
     "recharts": "^1.8.5"
   },
   "scripts": {
-    "start": "REACT_APP_GOOGLEID: 956237608940-rkcol4ero2rjnoitf08okr0nbkvjjgq8.apps.googleusercontent.com react-scripts start",
+    "start": " react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
