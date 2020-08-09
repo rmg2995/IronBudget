@@ -3,8 +3,8 @@ import axios from "axios";
 let baseURL;
 
 process.env.NODE_ENV === "production"
-  ? ((baseURL = "/api"), "https://ironbudget.herokuapp.com")
-  : (baseURL = "http://localhost:5000/api");
+  ? (baseURL = "https://ironbudget.herokuapp.com")
+  : (baseURL = "http://localhost:5000");
 console.log(process.env.NODE_ENV, "monkey", baseURL);
 const service = axios.create({ withCredentials: true, baseURL });
 
